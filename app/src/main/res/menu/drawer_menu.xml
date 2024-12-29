@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:title="首頁"/>
+        <item
+            android:id="@+id/nav_profile"
+            android:title="個人資料"/>
+        <item
+            android:id="@+id/nav_settings"
+            android:title="設定"/>
+        <item
+            android:id="@+id/nav_chatgpt"
+            android:title="ChatGPT"
+            android:icon="@drawable/ic_chatgpt" />
+        <item
+            android:id="@+id/nav_multi_user_chat"
+            android:icon="@drawable/ic_group_chat"
+            android:title="多人聊天室" />
+    </group>
+</menu>
