@@ -10,5 +10,16 @@
         <item
             android:id="@+id/nav_settings"
             android:title="設定"/>
+HEAD
+
+        <item
+            android:id="@+id/nav_chatgpt"
+            android:title="ChatGPT"
+            android:icon="@drawable/ic_chatgpt" />
+        <item
+            android:id="@+id/nav_multi_user_chat"
+            android:icon="@drawable/ic_group_chat"
+            android:title="多人聊天室" />
+function_openai
     </group>
 </menu>

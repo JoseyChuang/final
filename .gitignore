@@ -8,8 +8,16 @@
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
+HEAD
+Thumbs.db
+function_openai
 /build
 /captures
 .externalNativeBuild
 .cxx
+HEAD
+
+.idea/
+*.iml
+function_openai
 local.properties

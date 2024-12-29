@@ -1,4 +1,8 @@
 package com.example.final_project;
+HEAD
+
+import android.content.Intent;
+function_openai
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
@@ -58,6 +62,17 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.nav_settings) {
                     selectedFragment = new SettingsFragment();
                 }
+HEAD
+
+                else if (id == R.id.nav_chatgpt) {
+                    Intent intent = new Intent(MainActivity.this, ChatGPTActivity.class);
+                    startActivity(intent);
+                }
+                else if (id == R.id.nav_multi_user_chat) {
+                    Intent intent = new Intent(MainActivity.this, MultiUserChatActivity.class);
+                    startActivity(intent);
+                }
+function_openai
 
                 // 切換 Fragment
                 if (selectedFragment != null) {
