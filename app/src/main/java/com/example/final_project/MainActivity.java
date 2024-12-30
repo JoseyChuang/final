@@ -1,8 +1,6 @@
 package com.example.final_project;
-HEAD
 
 import android.content.Intent;
-function_openai
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
@@ -26,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // 初始化DrawerLayout和NavigationView
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -57,22 +56,21 @@ public class MainActivity extends AppCompatActivity {
 
                 if (id == R.id.nav_home) {
                     selectedFragment = new HomeFragment();
-                } else if (id == R.id.nav_profile) {
+                }
+                else if (id == R.id.nav_profile) {
                     selectedFragment = new ProfileFragment();
-                } else if (id == R.id.nav_settings) {
+                }
+                else if (id == R.id.nav_settings) {
                     selectedFragment = new SettingsFragment();
                 }
-HEAD
-
                 else if (id == R.id.nav_chatgpt) {
                     Intent intent = new Intent(MainActivity.this, ChatGPTActivity.class);
                     startActivity(intent);
                 }
                 else if (id == R.id.nav_multi_user_chat) {
-                    Intent intent = new Intent(MainActivity.this, MultiUserChatActivity.class);
+                    Intent intent = new Intent(MainActivity.this, NicknameActivity.class);
                     startActivity(intent);
                 }
-function_openai
 
                 // 切換 Fragment
                 if (selectedFragment != null) {

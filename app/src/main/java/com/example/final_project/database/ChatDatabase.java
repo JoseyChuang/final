@@ -5,7 +5,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {Message.class}, version = 1)
+import java.util.concurrent.Executors;
+
+@Database(entities = {Message.class}, version = 2, exportSchema = false)
 public abstract class ChatDatabase extends RoomDatabase {
     public abstract MessageDao messageDao();
 
@@ -16,13 +18,16 @@ public abstract class ChatDatabase extends RoomDatabase {
             synchronized (ChatDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
-                            context.getApplicationContext(),
-                            ChatDatabase.class,
-                            "chat_database"
-                    ).build();
+                                    context.getApplicationContext(),
+                                    ChatDatabase.class,
+                                    "chat_database"
+                            )
+                            .fallbackToDestructiveMigration()
+                            .build();
                 }
             }
         }
         return INSTANCE;
     }
 }
+
