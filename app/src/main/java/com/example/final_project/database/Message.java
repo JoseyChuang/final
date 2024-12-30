@@ -10,4 +10,5 @@ public class Message {
     public String content;
     public String sender; // "User" or "AI"
     public long timestamp; // 時間戳
+    public String roomId;
 }

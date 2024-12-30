@@ -6,10 +6,11 @@ import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 
 public class CustomWebSocketClient extends WebSocketClient {
-    private static final String BASE_URL = "ws://yourserver.com/chat/";
 
-    public CustomWebSocketClient(String roomId, String userId) {
-        super(URI.create(BASE_URL + roomId + "/" + userId));
+    private static final String WS_URL = "ws://192.168.196.242:8080";
+
+    public CustomWebSocketClient(URI serverUri) {
+        super(serverUri); // 使用父類建構函數初始化
     }
 
     @Override
@@ -32,14 +33,16 @@ public class CustomWebSocketClient extends WebSocketClient {
         System.out.println("WebSocket Error: " + ex.getMessage());
     }
 
+    // ✅ 修正 sendMessage 方法
     public void sendMessage(String message) {
-        if (this.isOpen()) {
-            this.send(message);
+        if (this.isOpen()) { // 檢查連線是否打開
+            this.send(message); // 使用 WebSocketClient 的 send 方法
         } else {
             System.out.println("WebSocket is not connected.");
         }
     }
 
+    // ✅ 添加一個方法來手動關閉 WebSocket 連接
     public void disconnect() {
         if (this.isOpen()) {
             this.close();

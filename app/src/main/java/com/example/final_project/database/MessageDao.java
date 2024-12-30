@@ -16,4 +16,7 @@ public interface MessageDao {
 
     @Query("DELETE FROM chat_messages")
     void clearAllMessages();
+
+    @Query("SELECT * FROM chat_messages WHERE roomId = :roomId ORDER BY timestamp ASC")
+    List<Message> getMessagesByRoomId(String roomId);
 }
