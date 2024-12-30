@@ -5,46 +5,53 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/inputMessage"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Type your message..." />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"/>
 
-    <Button
-        android:id="@+id/sendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send" />
 
-    <TextView
-        android:id="@+id/chatResponse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Response will appear here"
-        android:paddingTop="16dp" />
+        <EditText
+            android:id="@+id/inputMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type your message..." />
 
-    <TextView
-        android:id="@+id/nicknameDisplay"
-        android:text="使用者"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp" />
+        <Button
+            android:id="@+id/sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send" />
 
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:contentDescription="Profile Image"
-        android:src="@drawable/ic_default_profile"
-        android:layout_marginBottom="16dp" />
+        <TextView
+            android:id="@+id/chatResponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Response will appear here"
+            android:paddingTop="16dp" />
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:text="個人設定"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
+        <TextView
+            android:id="@+id/nicknameDisplay"
+            android:text="使用者"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
 
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="Profile Image"
+            android:src="@drawable/ic_default_profile"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/settingsButton"
+            android:text="個人設定"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
 </LinearLayout>
