@@ -46,6 +46,10 @@
             android:exported="true"
             android:theme="@style/Theme.Final_project" />
 
+        <activity android:name=".SettingsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Final_project"/>
+
         <!-- Meta-Data 配置 -->
         <meta-data
             android:name="com.google.android.actions"
