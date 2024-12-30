@@ -10,7 +10,12 @@ public class OpenAIResponse {
     }
 
     public static class Choice {
+        private int index;
         private Message message;
+
+        public int getIndex() {
+            return index;
+        }
 
         public Message getMessage() {
             return message;

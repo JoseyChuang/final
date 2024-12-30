@@ -61,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new ProfileFragment();
                 }
                 else if (id == R.id.nav_settings) {
-                    selectedFragment = new SettingsFragment();
+                    Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                    startActivity(intent);
                 }
                 else if (id == R.id.nav_chatgpt) {
                     Intent intent = new Intent(MainActivity.this, ChatGPTActivity.class);
