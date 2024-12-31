@@ -1,5 +1,6 @@
 package com.example.final_project.adapter;
 
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.final_project.R;
 import com.example.final_project.model.ChatMessage;
 
@@ -16,9 +18,8 @@ import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
 
-    private List<ChatMessage> chatMessages;
+    private final List<ChatMessage> chatMessages;
 
-    // 建構子，傳入訊息列表
     public ChatAdapter(List<ChatMessage> chatMessages) {
         this.chatMessages = chatMessages;
     }
@@ -26,7 +27,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
     @NonNull
     @Override
     public ChatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // 載入單一訊息項目的佈局
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_chat_message, parent, false);
         return new ChatViewHolder(view);
@@ -34,11 +34,22 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, int position) {
-        // 綁定訊息資料到 ViewHolder
         ChatMessage message = chatMessages.get(position);
-        holder.nicknameDisplay.setText(message.getNickname());
-        holder.messageContent.setText(message.getMessage());
-        holder.profileImage.setImageResource(message.getProfileImageResId());
+
+        holder.userName.setText(message.getUserName());
+        holder.messageText.setText(message.getMessage());
+
+        // 根據 URI 顯示使用者圖片，否則顯示預設圖片
+        if (message.getUserImageUri() != null && !message.getUserImageUri().isEmpty()) {
+            Glide.with(holder.userImage.getContext())
+                    .load(Uri.parse(message.getUserImageUri()))
+                    .placeholder(R.drawable.ic_default_profile)
+                    .error(R.drawable.ic_default_profile)
+                    .circleCrop()
+                    .into(holder.userImage);
+        } else {
+            holder.userImage.setImageResource(R.drawable.ic_default_profile);
+        }
     }
 
     @Override
@@ -46,23 +57,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder
         return chatMessages.size();
     }
 
-    // ViewHolder 類別，用於綁定 UI 元件
-    static class ChatViewHolder extends RecyclerView.ViewHolder {
-        TextView nicknameDisplay;
-        TextView messageContent;
-        ImageView profileImage;
+    public static class ChatViewHolder extends RecyclerView.ViewHolder {
+        TextView userName, messageText;
+        ImageView userImage;
 
-        ChatViewHolder(View itemView) {
+        public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
-            nicknameDisplay = itemView.findViewById(R.id.nicknameDisplay);
-            messageContent = itemView.findViewById(R.id.messageContent);
-            profileImage = itemView.findViewById(R.id.profileImage);
+            userName = itemView.findViewById(R.id.userName);
+            messageText = itemView.findViewById(R.id.messageText);
+            userImage = itemView.findViewById(R.id.userImage);
         }
-    }
-
-    // 新增訊息到列表並更新 UI
-    public void addMessage(ChatMessage message) {
-        chatMessages.add(message);
-        notifyItemInserted(chatMessages.size() - 1);
     }
 }

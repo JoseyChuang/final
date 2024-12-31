@@ -1,25 +1,26 @@
 package com.example.final_project.model;
 
 public class ChatMessage {
-    private String nickname;       // 暱稱
-    private String message;        // 訊息內容
-    private int profileImageResId; // 頭像資源ID
+    private String userName;
+    private String message;
+    private String userImageUri; // 圖片 URI
 
-    public ChatMessage(String nickname, String message, int profileImageResId) {
-        this.nickname = nickname;
+    public ChatMessage(String userName, String message, String userImageUri) {
+        this.userName = userName;
         this.message = message;
-        this.profileImageResId = profileImageResId;
+        this.userImageUri = userImageUri;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUserName() {
+        return userName;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public int getProfileImageResId() {
-        return profileImageResId;
+    public String getUserImageUri() {
+        return userImageUri;
     }
 }
+

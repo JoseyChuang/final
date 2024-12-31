@@ -23,7 +23,7 @@ public class NicknameActivity extends AppCompatActivity {
             String nickname = nicknameInput.getText().toString().trim();
             if (!nickname.isEmpty()) {
                 // 將暱稱傳遞到 MultiUserChatActivity
-                Intent intent = new Intent(NicknameActivity.this, MultiUserChatActivity.class);
+                Intent intent = new Intent(NicknameActivity.this, MultiUserChatFragment.class);
                 intent.putExtra("USER_ID", nickname);
                 startActivity(intent);
                 finish();
